@@ -14,9 +14,14 @@
 */
 void test_validate_my_username()
 {
-    /**
-     * TODO: Replace the line below with your code here as described above to verify your /conf/username.txt 
-     * config file and my_username() functions are setup properly
-     */
-    TEST_ASSERT_TRUE_MESSAGE(false,"AESD students, please fix me!");
+    const char *actual_username = my_username();
+    char *configured_username = malloc_username_from_conf_file();
+
+    TEST_ASSERT_EQUAL_STRING_MESSAGE(
+        configured_username,
+        actual_username,
+        "GitHub username does not match conf/username.txt"
+    );
+
+    free(configured_username);
 }
